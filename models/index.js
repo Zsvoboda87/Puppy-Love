@@ -1,4 +1,4 @@
-const User = require("./Owner");
+const Owner = require("./Owner");
 
 
 module.exports = { Owner };
