@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize/types");
 const sequelize = require("../config/connection");
 
 // create our User model
@@ -38,6 +39,11 @@ Pet.init(
           type: DataTypes.DATE,
           // MM/DD/YYYY (Defaults YYYY MM DD)
           // NEEDS MORE RESEARCH: select convert(varchar,datecolumname,101) as datecolumname from tablename
+          allowNull: false,
+      },
+      petLikes: {
+          // what does the pet like? walks, balls, tug o' war, etc
+          type: DataTypes.STRING,
           allowNull: false,
       },
     },
