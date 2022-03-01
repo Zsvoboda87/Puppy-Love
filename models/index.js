@@ -1,4 +1,5 @@
 const Owner = require("./Owner");
+const Pet = require('./Pet');
 
 
-module.exports = { Owner };
+module.exports = { Owner, Pet };
