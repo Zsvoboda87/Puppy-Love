@@ -24,6 +24,11 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
+<<<<<<< HEAD
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+=======
+>>>>>>> dcfd3c5c7aec3e5b296eabc6a445607bf0b14426
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "path": "^0.12.7",
