@@ -1,0 +1,24 @@
+<form method="post" action="/api/owners/upload" enctype="multipart/form-data">
+  <label>Pet Name</label>
+  <input type="text" name="petName" />
+
+  <div>
+    <h2>Gender</h2>
+    <label>Female</label>
+    <input type="checkbox" name="petGender" />
+    <label>Male</label>
+    <input type="checkbox" name="petGender" />
+  </div>
+  <div>
+    <label>Birthday</label>
+    <input type="date" name="petBirthday" />
+  </div>
+  <div>
+    <label>Your Pets interest</label>
+    <input type="text" name="petLikes" />
+  </div>
+
+  <h1>Upload Image</h1>
+  <input type="file" name="petImage" />
+  <input type="submit" />
+</form>

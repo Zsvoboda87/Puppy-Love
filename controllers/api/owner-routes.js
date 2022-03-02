@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const { Owner, Pet } = require('../../models');
 
 // Log in route and create a session
 router.post('/login', (req, res) => {
-  User.findOne({
+  Owner.findOne({
     where: {
       email: req.body.email
     }
