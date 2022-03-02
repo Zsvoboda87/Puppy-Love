@@ -22,9 +22,9 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
     res.send("image Uploaded")
     Pet.create({
               image: req.file.path,
-              petOwner: 1,
+              petOwner: req.session.owner_id,
               petName: req.body.petName,
-              petGender: req.body.petGender,
+              petGender: req.body.petGender ,
               petBirthday: req.body.petBirthday,
               petLikes: req.body.petLikes
             })
