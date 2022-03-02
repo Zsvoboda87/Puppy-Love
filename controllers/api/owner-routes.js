@@ -1,8 +1,28 @@
 const router = require('express').Router();
+const { Owner, Pet } = require('../../models');
+
+router.post("/", (req, res) => {
+  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  Owner.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+  })
+  .then(dbUserData => {
+    req.session.save(() => {
+      req.session.owner_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+  
+      res.json(dbUserData);
+    });
+  })
+});
+
 
 // Log in route and create a session
 router.post('/login', (req, res) => {
-  User.findOne({
+  Owner.findOne({
     where: {
       email: req.body.email
     }
@@ -21,7 +41,7 @@ router.post('/login', (req, res) => {
 
     req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbUserData.id;
+      req.session.owner_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
@@ -40,7 +60,6 @@ router.post('/logout', (req, res) => {
   else {
     res.status(404).end();
   }
-
 });
 
   module.exports = router;
