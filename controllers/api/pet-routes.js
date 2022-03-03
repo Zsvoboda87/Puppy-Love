@@ -51,4 +51,21 @@ router.get('/:id', (req, res) => {
         });
 });
 
+//create new pet
+router.post('/', (req, res) => {
+    Pet.create({
+        image: req.body.image,
+        id: req.session.id,
+        petOwner: req.body.petOwner,
+        petName: req.body.petName,
+        petGender: req.body.petGender,
+        petBirthday: req.body.petBirthday,
+        petLikes: req.body.petLikes
+    }).then(puppy_love_db => res.json(puppy_love_db))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 module.exports = router;
