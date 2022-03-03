@@ -118,4 +118,25 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//delete a specific pet from the owner
+router.delete('/:id', (req, res) => {
+    console.log('id', req.params.id);
+    Pet.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(puppy_love_db => {
+        if (!puppy_love_db) {
+            res.status(404).json({ message: 'No pet found with this id' });
+            return;
+        }
+        res.json(puppy_love_db);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 module.exports = router;
