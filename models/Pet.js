@@ -22,17 +22,20 @@ Pet.init(
         autoIncrement: true,
       },
       petOwner: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'owner',
+          key: 'id'
+        }
       },
       petName: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       petGender: {
-          type: DataTypes.BOOLEAN,
+          type: DataTypes.STRING,
           // in the frontend code have it set: if TRUE; make pet FEMALE, if FALSE; make pet MALE
-          allowNull: false,
       },
       petBirthday: {
           type: DataTypes.DATE,
