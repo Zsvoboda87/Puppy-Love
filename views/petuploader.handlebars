@@ -1,28 +1,49 @@
- <div class="pet-uploader">
-        <form method="post" action="/petUploader/upload" enctype="multipart/form-data">
-            <h1>Upload Your Pet!</h1>
-            <label>Pet Name</label>
-            <input type="text" name="petName" />
+<div class="pet-uploader">
+  <form
+    method="post"
+    action="/petUploader/upload"
+    enctype="multipart/form-data"
+  >
+    <h1>Upload Your Pet!</h1>
+    <label>Pet Name</label>
+    <input type="text" name="petName" />
 
-            <div class="gender">
-                <h2>Gender</h2>
-                <label>Female</label>
-                <input type="checkbox" value="true" name="petGender" />
-                <label>Male</label>
-                <input type="checkbox" />
-            </div>
-            <div>
-                <label>Birthday</label>
-                <input type="date" name="petBirthday" />
-            </div>
-            <div class="flex-column">
-                <label>Your Pets Interests</label>
-                <input type="text" name="petLikes" />
-            </div>
-            <div>
-                <h2>Upload Image</h2>
-                <input type="file" name="petImage" />
-                <input type="submit" />
-            </div>
-        </form>
+    <div class="gender">
+      <h3>Gender</h3>
+      <div>
+        <input type="radio" name="petGender" value="Female" />
+        <label>Female</label>
+        <input type="radio" name="petGender" value="Male" />
+        <label>Male</label>
+      </div>
     </div>
+    <div>
+      <label>Birthday</label>
+      <input type="date" name="petBirthday" />
+    </div>
+    <div class="flex-column">
+      <label>Your Dogs Interests</label>
+                <div class="checkbox-column">
+                    <label><input class="checkbox" type="checkbox" name="petLikes" value="swimming">Swimming</label>
+                    <label><input class="checkbox" type="checkbox" name="petLikes"value="walks">Walks</label>
+                    <label><input class="checkbox" type="checkbox" value="bones">Bones</label>
+                    <label><input class="checkbox" type="checkbox" value="licking">Licking</label>
+                </div>
+                <div class="checkbox-column">
+                    <label><input class="checkbox" type="checkbox" value="barking">Barking</label>
+                    <label><input class="checkbox" type="checkbox" value="running">Running</label>
+                    <label><input class="checkbox" type="checkbox" value="jumping">Jumping</label>
+                    <label><input class="checkbox" type="checkbox" value="treats">Treats</label>
+                </div>
+    </div>
+    <div class="flex-column">
+      <label>Description of your Dog</label>
+      <input type="text" name="petAboutMe" />
+    </div>
+    <div>
+      <h2>Upload Image</h2>
+      <input type="file" name="petImage" />
+      <input type="submit" />
+    </div>
+  </form>
+</div>
