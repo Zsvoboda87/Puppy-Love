@@ -1,7 +1,7 @@
-const router = require("express").Router();
-// const sequelize = require('../..config/connection');
-const { Pet, Owner } = require("../../models");
-const res = require("express/lib/response");
+
+const router = require('express').Router();
+const { Pet, Owner } = require('../../models');
+const res = require('express/lib/response');
 
 //get all pets
 router.get("/", (req, res) => {
