@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 });
 
 // // render pet gallery
-router.get('/gallery', (req, res) => {
+router.get('/petGallery', (req, res) => {
   console.log('======================');
   Pet.findAll({
     attributes: [
@@ -33,7 +33,7 @@ router.get('/gallery', (req, res) => {
       'petGender',
       'petBirthday',
       'petLikes',
-      
+      'petAboutMe'
     ],
     include: [
       {
