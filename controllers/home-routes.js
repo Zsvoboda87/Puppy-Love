@@ -19,47 +19,41 @@ router.get("/logout", (req, res) => {
 });
 
 // render homepage
-// router.get('/', (req, res) => {
-//   res.render('homepage');
-// });
+router.get('/', (req, res) => {
+  res.render('homepage');
+});
 
 // // render pet gallery
-// router.get('/', (req, res) => {
-//   console.log('======================');
-//   Pet.findAll({
-//     attributes: [
-//       'id',
-//       'post_url',
-//       'title',
-//       'created_at',
-//     ],
-//     include: [
-//       {
-//         model: Comment,
-//         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-//         include: {
-//           model: User,
-//           attributes: ['username']
-//         }
-//       },
-//       {
-//         model: User,
-//         attributes: ['username']
-//       }
-//     ]
-//   })
-//     .then(dbPostData => {
-//       const posts = dbPostData.map(post => post.get({ plain: true }));
+router.get('/gallery', (req, res) => {
+  console.log('======================');
+  Pet.findAll({
+    attributes: [
+      'image',
+      'petName',
+      'petGender',
+      'petBirthday',
+      'petLikes',
+      
+    ],
+    include: [
+      {
+        model: Owner,
+        attributes: ['username', 'email'],
+      },
+    ]
+  })
+    .then(dbPetData => {
+      const petCards = dbPetData.map(pet => pet.get({ plain: true }));
 
-//       res.render('homepage', {
-//         posts,
-//         loggedIn: req.session.loggedIn
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+      console.log(petCards)
+      res.render('petGallery', {
+        petCards,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

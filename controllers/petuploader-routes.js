@@ -24,14 +24,15 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
               petName: req.body.petName,
               petGender: req.body.petGender ,
               petBirthday: req.body.petBirthday,
-              petLikes: req.body.petLikes
+              petLikes: req.body.petLikes,
+              petAboutMe: req.body.petLikes
             })
-    res.render('homepage')
+    res.render('petGallery')
 });
 
 
 router.get('/', (req, res) => {
-    
+    res.render('petuploader')
 });
 
 module.exports = router;
