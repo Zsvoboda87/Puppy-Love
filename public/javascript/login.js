@@ -42,7 +42,7 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/petUploader");
     } else {
       alert(response.statusText);
     }

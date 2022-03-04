@@ -32,7 +32,7 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
 
 
 router.get('/', (req, res) => {
-  res.render('dashboard')  
+  res.render('petuploader')  
 });
 
 module.exports = router;

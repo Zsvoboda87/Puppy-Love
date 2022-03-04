@@ -1,5 +1,3 @@
-const res = require('express/lib/response');
-const { Owner } = require('../../models');
 
 const router = require('express').Router();
 const { Owner, Pet } = require('../../models');
