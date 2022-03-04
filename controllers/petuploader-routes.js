@@ -19,7 +19,7 @@ const upload = multer({storage: storage})
 router.post('/upload', upload.single('petImage'), (req, res) => { 
     Pet.create({
               image: req.file.filename,
-              petOwner: req.session.owner_id,
+              owner_id: req.session.owner_id,
               petName: req.body.petName,
               petGender: req.body.petGender ,
               petBirthday: req.body.petBirthday,

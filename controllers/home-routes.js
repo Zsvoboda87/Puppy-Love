@@ -45,7 +45,7 @@ router.get('/petGallery', (req, res) => {
     .then(dbPetData => {
       const petCards = dbPetData.map(pet => pet.get({ plain: true }));
 
-      console.log(petCards)
+      console.log(dbPetData)
       res.render('petGallery', {
         petCards,
       });
