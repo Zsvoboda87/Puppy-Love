@@ -44,10 +44,15 @@ Pet.init(
           allowNull: false,
       },
       petLikes: {
-          // what does the pet like? walks, balls, tug o' war, etc
+          // what does the pet like? predetermined options
           type: DataTypes.STRING,
           allowNull: false,
       },
+      petAboutMe: {
+        // biography paragraphs written by the owner
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       sequelize,

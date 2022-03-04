@@ -1,0 +1,18 @@
+ <div class="pet-uploader">
+        <form method="post" action="/dashboard/upload" enctype="multipart/form-data">
+            <div class="flex-column">
+                <h1>Update your pet's interests here:</h1>
+                <label>Your Pets Interests</label>
+                <input type="text" name="petLikes" />
+            </div>
+            <div class="flex-column">
+                <label>Update your Pets About Me!</label>
+                <input type="text" name="petAboutMe" />
+            </div>
+            <div>
+                <h2>Upload a new pet Image!</h2>
+                <input type="file" name="petImage" />
+                <input type="submit" />
+            </div>
+        </form>
+    </div>

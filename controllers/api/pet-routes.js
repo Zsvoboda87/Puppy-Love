@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
       "petGender",
       "petBirthday",
       "petLikes",
+      "petAboutMe",
     ],
   })
     .then((puppy_love_db) => res.json(puppy_love_db))
@@ -38,6 +39,7 @@ router.get("/:id", (req, res) => {
       "petGender",
       "petBirthday",
       "petLikes",
+      "petAboutMe",
     ],
   })
     .then((puppy_love_db) => {
@@ -63,6 +65,7 @@ router.post("/", (req, res) => {
     petGender: req.body.petGender,
     petBirthday: req.body.petBirthday,
     petLikes: req.body.petLikes,
+    petAboutMe: req.body.petAboutMe,
   })
     .then((puppy_love_db) => res.json(puppy_love_db))
     .catch((err) => {
@@ -95,6 +98,31 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//update specific pet's aboutme
+router.put("/:id", (req, res) => {
+    Pet.update(
+      {
+        petAboutMe: req.body.petAboutMe,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((puppy_love_db) => {
+        if (!puppy_love_db) {
+          res.status(404).json({ message: "No pet found with this id" });
+          return;
+        }
+        res.json(puppy_love_db);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 //update specific pet's likes
 router.put("/:id", (req, res) => {
