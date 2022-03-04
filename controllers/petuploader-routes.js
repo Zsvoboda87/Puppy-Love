@@ -6,7 +6,7 @@ const path = require('path')
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'Images')
+        cb(null, 'public/Images')
     },
 
     filename: (req, file, cb) => {
@@ -17,9 +17,9 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 
 router.post('/upload', upload.single('petImage'), (req, res) => { 
-    console.log(req.body.petLikes);
+    console.log(req.file);
     Pet.create({
-              image: req.file.path,
+              image: req.file.filename,
               petOwner: req.session.owner_id,
               petName: req.body.petName,
               petGender: req.body.petGender ,
