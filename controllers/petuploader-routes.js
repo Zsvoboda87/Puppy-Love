@@ -4,6 +4,7 @@ const { Owner, Pet} = require('../models');
 
 const path = require('path')
 const multer = require('multer');
+const { response } = require('express');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/Images')
@@ -26,6 +27,7 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
               petLikes: req.body.petLikes,
               petAboutMe: req.body.petAboutMe
             })
+            res.render('petGallery')
 });
 
 
