@@ -56,9 +56,13 @@ router.get('/petGallery', (req, res) => {
     });
 });
 
+// single pet
 router.get('/singlepet/:id', (req, res) => {
   console.log('======================');
   Pet.findOne({
+    where: {
+      id: req.params.id
+    },
     attributes: [
       'image',
       'petName',
@@ -67,19 +71,12 @@ router.get('/singlepet/:id', (req, res) => {
       'petLikes',
       'petAboutMe'
     ],
-    where: {
-      id: req.params.id
-    },
-
-    
-    include: [
-      {
-        model: Owner,
-        attributes: ['username', 'email'],
-      },
-    ]
   })
     .then(dbPetData => {
+      if (!dbPetData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
       const petCard = dbPetData.get({ plain: true });
 
       console.log(dbPetData)
