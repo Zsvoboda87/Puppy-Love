@@ -63,17 +63,33 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// find Owner by username
-router.get('/:username', (req, res) => {
-  User.findOne({
+// find Owner by id
+router.get('/:id', (req, res) => {
+  Owner.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      username: req.params.username
+      id: req.params.id
     },
-    include: {
-      model: Owner,
-      attributes: ['id', 'username', 'email']
+  }).then (puppy_love_db => {
+    if (!puppy_love_db) {
+      res.status(404).json({ message: 'No Owner found with this username' });
+      return;
     }
+    res.json(puppy_love_db);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+// owner find all
+router.get('/', (req, res) => {
+  Owner.findAll({
+    attributes: { exclude: ['password'] },
+    include: [ {
+      model:Pet
+    }]
   }).then (puppy_love_db => {
     if (!puppy_love_db) {
       res.status(404).json({ message: 'No Owner found with this username' });

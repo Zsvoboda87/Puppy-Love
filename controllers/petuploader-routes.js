@@ -6,11 +6,10 @@ const path = require('path')
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'Images')
+        cb(null, 'public/Images')
     },
 
     filename: (req, file, cb) => {
-        console.log(file)
         cb(null, Date.now() + path.extname(file.originalname))
     }
 })
@@ -18,21 +17,25 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 
 router.post('/upload', upload.single('petImage'), (req, res) => { 
-    console.log(req.file.path);
-    res.send("image Uploaded")
     Pet.create({
-              image: req.file.path,
-              petOwner: req.session.owner_id,
+              image: req.file.filename,
+              owner_id: req.session.owner_id,
               petName: req.body.petName,
               petGender: req.body.petGender ,
               petBirthday: req.body.petBirthday,
-              petLikes: req.body.petLikes
+              petLikes: req.body.petLikes,
+              petAboutMe: req.body.petAboutMe
             })
 });
 
 
 router.get('/', (req, res) => {
-  res.render('petuploader')  
+    res.render('petuploader')
+});
+
+
+router.get('/upload', (req, res) => {
+    res.render('petGallery')
 });
 
 module.exports = router;

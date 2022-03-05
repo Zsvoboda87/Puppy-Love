@@ -21,7 +21,7 @@ Pet.init(
         primaryKey: true,
         autoIncrement: true,
       },
-      petOwner: {
+      owner_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

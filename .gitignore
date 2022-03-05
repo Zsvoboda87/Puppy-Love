@@ -3,3 +3,5 @@ node_modules
 .env
 package-lock.json
 .prettierrc
+# ignore all images
+*.jpg

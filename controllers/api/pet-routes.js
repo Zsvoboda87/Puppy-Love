@@ -10,13 +10,17 @@ router.get("/", (req, res) => {
     attributes: [
       "image",
       "id",
-      "petOwner",
+      "owner_id",
       "petName",
       "petGender",
       "petBirthday",
       "petLikes",
       "petAboutMe",
     ],
+    include:[ {
+      model: Owner,
+      attributes: ["username", "email"],
+    }],
   })
     .then((puppy_love_db) => res.json(puppy_love_db))
     .catch((err) => {
@@ -34,7 +38,7 @@ router.get("/:id", (req, res) => {
     attributes: [
       "image",
       "id",
-      "petOwner",
+      "owner_id",
       "petName",
       "petGender",
       "petBirthday",
@@ -60,7 +64,7 @@ router.post("/", (req, res) => {
   Pet.create({
     image: req.body.image,
     id: req.session.id,
-    petOwner: req.body.petOwner,
+    owner_id: req.body.owner_id,
     petName: req.body.petName,
     petGender: req.body.petGender,
     petBirthday: req.body.petBirthday,
