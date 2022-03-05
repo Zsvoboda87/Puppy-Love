@@ -56,4 +56,42 @@ router.get('/petGallery', (req, res) => {
     });
 });
 
+router.get('/singlepet/:id', (req, res) => {
+  console.log('======================');
+  Pet.findOne({
+    attributes: [
+      'image',
+      'petName',
+      'petGender',
+      'petBirthday',
+      'petLikes',
+      'petAboutMe'
+    ],
+    where: {
+      id: req.params.id
+    },
+
+    
+    include: [
+      {
+        model: Owner,
+        attributes: ['username', 'email'],
+      },
+    ]
+  })
+    .then(dbPetData => {
+      const petCard = dbPetData.get({ plain: true });
+
+      console.log(dbPetData)
+      res.render('singlepet', {
+        petCard,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
 module.exports = router;
