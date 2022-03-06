@@ -34,14 +34,16 @@ router.get('/petGallery', (req, res) => {
       'petGender',
       'petBirthday',
       'petLikes',
-      'petAboutMe'
+      'petAboutMe',
+
     ],
     include: [
       {
         model: Owner,
         attributes: ['username', 'email'],
       },
-    ]
+    ],
+    order: [['id', 'DESC']],
   })
     .then(dbPetData => {
       const petCards = dbPetData.map(pet => pet.get({ plain: true }));
