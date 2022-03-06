@@ -1,14 +1,15 @@
-// async function redirect() {
-//     const response = await fetch("/petUploader/upload", {
-//       method: "post",
-//       headers: { "Content-Type": "application/json" },
-//     });
+// function redirect() {
+//   console.log('hey')
+//   //   const response = await fetch("/petGallery", {
+//   //     method: "get",
+//   //     headers: { "Content-Type": "application/json" },
+//   //   });
   
-//     if (response.ok) {
-//       document.location.replace("/petGallery");
-//     } else {
-//       alert(response.statusText);
-//     }
-//   }
+//   //   if (response.ok) {
+//   //     document.location.replace("/petGallery");
+//   //   } else {
+//   //     alert(response.statusText);
+//   //   }
+//   // }
   
 //   document.querySelector("#submit").addEventListener("click", redirect);

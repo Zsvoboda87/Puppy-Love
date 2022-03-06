@@ -28,6 +28,7 @@ router.get('/petGallery', (req, res) => {
   console.log('======================');
   Pet.findAll({
     attributes: [
+      'id',
       'image',
       'petName',
       'petGender',

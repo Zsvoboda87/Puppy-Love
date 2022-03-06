@@ -27,7 +27,7 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
               petLikes: req.body.petLikes,
               petAboutMe: req.body.petAboutMe
             })
-            res.render('petGallery')
+            res.json("Pet Added")
 });
 
 
