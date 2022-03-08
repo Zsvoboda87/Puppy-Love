@@ -28,24 +28,26 @@ router.get('/petGallery', (req, res) => {
   console.log('======================');
   Pet.findAll({
     attributes: [
+      'id',
       'image',
       'petName',
       'petGender',
       'petBirthday',
       'petLikes',
-      'petAboutMe'
+      'petAboutMe',
+
     ],
     include: [
       {
         model: Owner,
         attributes: ['username', 'email'],
       },
-    ]
+    ],
+    order: [['id', 'DESC']],
   })
     .then(dbPetData => {
       const petCards = dbPetData.map(pet => pet.get({ plain: true }));
 
-      console.log(dbPetData)
       res.render('petGallery', {
         petCards,
       });
@@ -79,7 +81,6 @@ router.get('/singlepet/:id', (req, res) => {
       }
       const petCard = dbPetData.get({ plain: true });
 
-      console.log(dbPetData)
       res.render('singlepet', {
         petCard,
       });
