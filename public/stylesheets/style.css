@@ -16,6 +16,16 @@
     align-items: center;
     padding-top: 10px
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    background-color: black;
+    color: white;
+  }
   
   h2 {
     margin-top: 10px;
@@ -26,11 +36,36 @@
     margin-bottom: 15px;
   }
   
+
+  /* Utility Classes */
   .flex-column {
     display: flex;
     flex-direction: column;
   }
 
-  .pet-card {
+  .flex-evenly {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+  }
+  
+  .card-parent {
+    width: 22vw;
+    margin: 0;
+    margin-top: 10px;
+    border: 2px solid black
+  }
+  .card-parent img{
+    width: 22vw;
+    margin: 0
+  }
+
+  .pet-name {
+    margin: 0;
+  }
+
+  .single-pet-parent {
     width: 42vw;
+    margin:auto
   }

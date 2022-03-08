@@ -1,11 +1,9 @@
-
+<div class="flex-evenly">
 {{#each petCards as |pet|}}
-  <div class="card-parent"></div>
-      <h1>{{petName}}</h1>
+  <a href="singlepet/{{id}}" class="card-parent">
+      <h1 class="pet-name">{{petName}}</h1>
       <img src="Images/{{image}}"/>
-      <h3>{{petGender}}</h3>
-      <h4>{{petBirthday}}</h4>
       <h3>{{petLikes}}</h3>
-      <h4>{{petAboutMe}}</h4>
-  </div>
+  </a>
 {{/each}}
+</div>

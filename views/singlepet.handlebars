@@ -1,8 +1,10 @@
-  <div class="card-parent"></div>
-      <h1>{{petName}}</h1>
-      <img src="Images/{{image}}"/>
-      <h3>{{petGender}}</h3>
-      <h4>{{petBirthday}}</h4>
-      <h3>{{petLikes}}</h3>
-      <h4>{{petAboutMe}}</h4>
+  
+  <div class="flex-column single-pet-parent">
+      <h1>{{petCard.petName}}</h1>
+      <h3>{{petCard.petGender}}</h3>
+      <h3>{{petCard.petBirthday}}</h3>
+      <h3>{{petCard.petLikes}}</h3>
+      <h4>{{petCard.petAboutMe}}</h4>
+      <img src="/Images/{{petCard.image}}"/>
   </div>
+
