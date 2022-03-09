@@ -43,10 +43,46 @@ Pet.init(
           // NEEDS MORE RESEARCH: select convert(varchar,datecolumname,101) as datecolumname from tablename
           allowNull: false,
       },
-      petLikes: {
-          // what does the pet like? predetermined options
-          type: DataTypes.STRING,
-          allowNull: true,
+      //petLikes
+      petLikesSwimming: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesWalks: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesBones: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesLicking: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesBarking: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesRunning: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesJumping: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesTreats: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       petAboutMe: {
         // biography paragraphs written by the owner

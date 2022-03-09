@@ -3,7 +3,30 @@
   <a href="singlepet/{{id}}" class="card-parent">
       <h1 class="pet-name">{{petName}}</h1>
       <img src="Images/{{image}}"/>
-      <h3>{{petLikes}}</h3>
+      {{#if petLikesSwimming}}
+      <h3>Swimming</h3>
+      {{/if}}
+      {{#if petLikesWalks}}
+      <h3>Walks</h3>
+      {{/if}}
+      {{#if petLikesBones}}
+      <h3>Bones</h3>
+      {{/if}}
+      {{#if petLikesLicking}}
+      <h3>Licking</h3>
+      {{/if}}
+      {{#if petLikesBarking}}
+      <h3>Barking</h3>
+      {{/if}}
+      {{#if petLikesRunning}}
+      <h3>Running</h3>
+      {{/if}}
+      {{#if petLikesJumping}}
+      <h3>Jumping</h3>
+      {{/if}}
+      {{#if petLikesTreats}}
+      <h3>Treats</h3>
+      {{/if}}
   </a>
 {{/each}}
 </div>
