@@ -24,7 +24,14 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
               petName: req.body.petName,
               petGender: req.body.petGender ,
               petBirthday: req.body.petBirthday,
-              petLikes: req.body.petLikes,
+              petLikesSwimming: req.body.petLikesSwimming,
+              petLikesWalks: req.body.petLikesWalks,
+              petLikesBones: req.body.petLikesBones,
+              petLikesLicking: req.body.petLikesLicking,
+              petLikesBarking: req.body.petLikesBarking,
+              petLikesRunning: req.body.petLikesRunning,
+              petLikesJumping: req.body.petLikesJumping,
+              petLikesTreats: req.body.petLikesTreats,
               petAboutMe: req.body.petAboutMe
             })
             res.redirect('/petGallery')
