@@ -46,7 +46,7 @@ Pet.init(
       petLikes: {
           // what does the pet like? predetermined options
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: true,
       },
       petAboutMe: {
         // biography paragraphs written by the owner

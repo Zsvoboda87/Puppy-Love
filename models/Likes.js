@@ -15,7 +15,18 @@ Likes.init(
         primaryKey: true,
         autoIncrement: true,
       },
-     
+      likes: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      pet_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'pet',
+          key: 'id'
+        }
+      },
     },
     {
       sequelize,
