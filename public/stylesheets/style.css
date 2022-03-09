@@ -1,71 +1,70 @@
 .pet-uploader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    width: 60%;
-    padding: 10px
-  }
-  
-  h1 {
-    background-color: grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: 60%;
+  padding: 10px;
+}
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
+h1 {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
 
-  a:hover {
-    background-color: black;
-    color: white;
-  }
-  
-  h2 {
-    margin-top: 10px;
-  }
-  
-  .gender {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-  
+a {
+  text-decoration: none;
+  color: black;
+}
 
-  /* Utility Classes */
-  .flex-column {
-    display: flex;
-    flex-direction: column;
-  }
+a:hover {
+  background-color: black;
+  color: white;
+}
 
-  .flex-evenly {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-  }
-  
-  .card-parent {
-    width: 22vw;
-    margin: 0;
-    margin-top: 10px;
-    border: 2px solid black
-  }
-  .card-parent img{
-    width: 22vw;
-    margin: 0
-  }
+h2 {
+  margin-top: 10px;
+}
 
-  .pet-name {
-    margin: 0;
-  }
+.gender {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
-  .single-pet-parent {
-    width: 42vw;
-    margin:auto
-  }
+/* Utility Classes */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-evenly {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
+}
+
+.card-parent {
+  width: 22vw;
+  margin: 0;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+.card-parent img {
+  width: 22vw;
+  margin: 0;
+}
+
+.pet-name {
+  margin: 0;
+}
+
+.single-pet-parent {
+  width: 42vw;
+  margin: auto;
+}

@@ -39,14 +39,70 @@ Pet.init(
       },
       petBirthday: {
           type: DataTypes.DATE,
-          // MM/DD/YYYY (Defaults YYYY MM DD)
-          // NEEDS MORE RESEARCH: select convert(varchar,datecolumname,101) as datecolumname from tablename
+          get: function() {
+            const birthDate = new Date(this.getDataValue('petBirthday'));
+
+            const birthdayMath = Math.abs(Date.now() - birthDate);
+            const birthdayMath2 = Math.ceil(birthdayMath / (1000 * 60 * 60 * 24));
+            console.log(birthDate);
+            console.log(birthdayMath2 + " days");
+            const birthdayMath3 = Math.floor(birthdayMath2 / 365);
+            console.log(birthdayMath3);
+            if (birthdayMath3 < 1) {
+              console.log();
+            }
+            if (birthdayMath3 < 1) {
+              return "They are too young to date.";
+            }
+            else if (birthdayMath3 === 1) {
+              return birthdayMath3 + " year old";
+            }
+            else {
+              return birthdayMath3 + " years old";
+            }
+          },
           allowNull: false,
       },
-      petLikes: {
-          // what does the pet like? predetermined options
-          type: DataTypes.STRING,
-          allowNull: true,
+      //petLikes
+      petLikesSwimming: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesWalks: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesBones: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesLicking: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesBarking: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesRunning: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesJumping: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+      petLikesTreats: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       petAboutMe: {
         // biography paragraphs written by the owner
