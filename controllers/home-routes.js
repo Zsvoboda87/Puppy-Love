@@ -32,6 +32,7 @@ router.get('/petGallery', (req, res) => {
   console.log('======================');
   Pet.findAll({
     attributes: [
+      'owner_id',
       'id',
       'image',
       'petName',
@@ -78,6 +79,7 @@ router.get('/singlepet/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
+      'owner_id',
       'image',
       'petName',
       'petGender',
