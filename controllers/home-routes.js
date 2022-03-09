@@ -2,11 +2,18 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Owner, Pet } = require("../models");
 
+// render welcome
+router.get("/", (req, res) => {
+  res.render("welcome", {
+    loggedIn: req.session.loggedIn,
+  });
+});
+
 // render login screen
 router.get("/login", (req, res) => {
   // if logged in redirect to homepage
   if (req.session.loggedIn) {
-    res.redirect("/login");
+    res.redirect("/homepage");
     return;
   }
   res.render("login");
@@ -21,19 +28,29 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-// //  logout and render welcome
-// router.get("/logout", (req, res) => {
-//   res.render("welcome");
-// });
+//render homepage
+router.get("/homepage", (req, res) => {
+  res.render("homepage");
+});
 
-// render homepage
-router.get("/", (req, res) => {
+//  logout and render welcome
+router.get("/logout", (req, res) => {
+  res.render("welcome");
+});
+
+// render welcome from logging out
+router.get("/welcome", (req, res) => {
   res.render("welcome", {
     loggedIn: req.session.loggedIn,
   });
 });
 
-// // render pet gallery
+//render pet update
+router.get("/petUpdate", (req, res) => {
+  res.render("petUpdate");
+});
+
+// render pet gallery
 router.get("/petGallery", (req, res) => {
   console.log("======================");
   Pet.findAll({

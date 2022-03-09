@@ -42,7 +42,7 @@ router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
 });
 
 router.get("/", withAuth, (req, res) => {
-  res.render("homepage", { loggedIn: req.session.loggedIn });
+  res.render("petuploader", { loggedIn: req.session.loggedIn });
 });
 
 // router.get('/upload', (req, res) => {
