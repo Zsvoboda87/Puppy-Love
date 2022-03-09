@@ -1,4 +1,4 @@
-.pet-uploader {
+/*.pet-uploader {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,7 @@ a {
 
 a:hover {
   background-color: black;
-  color: white;
+  color: rgb(243, 237, 237);
 }
 
 h2 {
@@ -35,6 +35,7 @@ h2 {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
 
 /* Utility Classes */
 .flex-column {
@@ -68,3 +69,4 @@ h2 {
   width: 42vw;
   margin: auto;
 }
+

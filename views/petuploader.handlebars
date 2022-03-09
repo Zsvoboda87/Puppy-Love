@@ -1,9 +1,9 @@
 <div class="pet-uploader">
-  <form
+  <form 
     method="post"
     action="/petUploader/upload"
     enctype="multipart/form-data"
-  >
+   >
     <h1>Upload Your Pet!</h1>
     <label>Pet Name</label>
     <input type="text" name="petName" />
@@ -11,12 +11,12 @@
     <div class="gender">
       <h3>Gender</h3>
       <div>
-        <input type="radio" name="petGender" value="Female" />
-        <label>Female</label>
-        <input type="radio" name="petGender" value="Male" />
-        <label>Male</label>
-      </div>
+        <input type="radio" name="petGender" value="Female" > Female <br>
+        <input type="radio" name="petGender" value="Male" > Male <br>
     </div>
+
+
+
     <div>
       <label>Birthday</label>
       <input type="date" name="petBirthday" />
@@ -46,4 +46,7 @@
       <input id="submit" type="submit" />
     </div>
   </form>
+
+ 
+
 </div>
