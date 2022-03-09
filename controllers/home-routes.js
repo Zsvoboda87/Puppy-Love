@@ -13,14 +13,16 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-//  logout and render login 
-router.get("/logout", (req, res) => {
-  res.render("login");
-});
+// //  logout and render login 
+// router.get("/logout", (req, res) => {
+//   res.render("login");
+// });
 
 // render homepage
 router.get('/', (req, res) => {
-  res.render('homepage');
+  res.render('homepage', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 // // render pet gallery
@@ -57,6 +59,7 @@ router.get('/petGallery', (req, res) => {
 
       res.render('petGallery', {
         petCards,
+        loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {
@@ -97,6 +100,7 @@ router.get('/singlepet/:id', (req, res) => {
 
       res.render('singlepet', {
         petCard,
+        loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {
