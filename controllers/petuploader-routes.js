@@ -1,11 +1,13 @@
-const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { Owner, Pet } = require("../models");
-const withAuth = require("../utils/auth");
 
-const path = require("path");
-const multer = require("multer");
-const { response } = require("express");
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { Owner, Pet} = require('../models');
+const withAuth = require('../utils/auth');
+
+const path = require('path')
+const multer = require('multer');
+const { response } = require('express');
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/Images");
