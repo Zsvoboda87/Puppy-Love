@@ -2,112 +2,118 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Owner, Pet } = require("../models");
 
-
 // render login screen
 router.get("/login", (req, res) => {
   // if logged in redirect to homepage
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/login");
     return;
   }
   res.render("login");
 });
 
-// //  logout and render login 
+//render signup screen
+router.get("/signup", (req, res) => {
+  if (req.session.signUp) {
+    res.redirect("/signup");
+    return;
+  }
+  res.render("signup");
+});
+
+// //  logout and render welcome
 // router.get("/logout", (req, res) => {
-//   res.render("login");
+//   res.render("welcome");
 // });
 
 // render homepage
-router.get('/', (req, res) => {
-  res.render('homepage', {
-    loggedIn: req.session.loggedIn
+router.get("/", (req, res) => {
+  res.render("welcome", {
+    loggedIn: req.session.loggedIn,
   });
 });
 
 // // render pet gallery
-router.get('/petGallery', (req, res) => {
-  console.log('======================');
+router.get("/petGallery", (req, res) => {
+  console.log("======================");
   Pet.findAll({
     attributes: [
-      'id',
-      'image',
-      'petName',
-      'petGender',
-      'petBirthday',
-      'petLikesSwimming',
-      'petLikesWalks',
-      'petLikesBones',
-      'petLikesLicking',
-      'petLikesBarking',
-      'petLikesRunning',
-      'petLikesJumping',
-      'petLikesTreats',
-      'petAboutMe',
-
+      "id",
+      "image",
+      "petName",
+      "petGender",
+      "petBirthday",
+      "petLikesSwimming",
+      "petLikesWalks",
+      "petLikesBones",
+      "petLikesLicking",
+      "petLikesBarking",
+      "petLikesRunning",
+      "petLikesJumping",
+      "petLikesTreats",
+      "petAboutMe",
     ],
     include: [
       {
         model: Owner,
-        attributes: ['username', 'email'],
+        attributes: ["username", "email"],
       },
     ],
-    order: [['id', 'DESC']],
+    order: [["id", "DESC"]],
   })
-    .then(dbPetData => {
-      const petCards = dbPetData.map(pet => pet.get({ plain: true }));
+    .then((dbPetData) => {
+      const petCards = dbPetData.map((pet) => pet.get({ plain: true }));
 
-      res.render('petGallery', {
+      res.render("petGallery", {
         petCards,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 // single pet
-router.get('/singlepet/:id', (req, res) => {
-  console.log('======================');
+router.get("/singlepet/:id", (req, res) => {
+  console.log("======================");
   Pet.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: [
-      'image',
-      'petName',
-      'petGender',
-      'petBirthday',
-      'petLikesSwimming',
-      'petLikesWalks',
-      'petLikesBones',
-      'petLikesLicking',
-      'petLikesBarking',
-      'petLikesRunning',
-      'petLikesJumping',
-      'petLikesTreats',
-      'petAboutMe'
+      "image",
+      "petName",
+      "petGender",
+      "petBirthday",
+      "petLikesSwimming",
+      "petLikesWalks",
+      "petLikesBones",
+      "petLikesLicking",
+      "petLikesBarking",
+      "petLikesRunning",
+      "petLikesJumping",
+      "petLikesTreats",
+      "petAboutMe",
     ],
   })
-    .then(dbPetData => {
+    .then((dbPetData) => {
       if (!dbPetData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
       const petCard = dbPetData.get({ plain: true });
 
-      res.render('singlepet', {
+      res.render("singlepet", {
         petCard,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
