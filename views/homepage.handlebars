@@ -1,12 +1,27 @@
-<div class="container">
+<div id="download-button" class="container">
   <section>
-    {{! highest ranked puppy }}
+    <a
+      href="/welcome"
+      id="logout"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Logout</a>
+    <a
+      href="/petGallery"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Pet Gallery</a>
+    <a
+      href="/petUpdate"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Update Your Pet's Info</a>
+    <a
+      href="/petuploader"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Upload a New Pet</a>
   </section>
   <section>
     {{!  }}
   </section>
-  <a href="/logout" id="logout">Logout</a>
-  <a href="/petUploader">Uploader</a>
+
 </div>
 
-{{! this gets slotted into page when on homepage in body of main.handlebars }}
+<script src="/javascript/logout.js"></script>

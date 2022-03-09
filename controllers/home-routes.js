@@ -4,95 +4,119 @@ const res = require("express/lib/response");
 const sequelize = require("../config/connection");
 const { Owner, Pet } = require("../models");
 
+// render welcome
+router.get("/", (req, res) => {
+  res.render("welcome", {
+    loggedIn: req.session.loggedIn,
+  });
+});
 
 // render login screen
 router.get("/login", (req, res) => {
   // if logged in redirect to homepage
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/homepage");
     return;
   }
   res.render("login");
 });
 
-// //  logout and render login 
-// router.get("/logout", (req, res) => {
-//   res.render("login");
-// });
+//render signup screen
+router.get("/signup", (req, res) => {
+  if (req.session.signUp) {
+    res.redirect("/signup");
+    return;
+  }
+  res.render("signup");
+});
 
-// render homepage
-router.get('/', (req, res) => {
-  res.render('homepage', {
-    loggedIn: req.session.loggedIn
+//render homepage
+router.get("/homepage", (req, res) => {
+  res.render("homepage");
+});
+
+//  logout and render welcome
+router.get("/logout", (req, res) => {
+  res.render("welcome");
+});
+
+// render welcome from logging out
+router.get("/welcome", (req, res) => {
+  res.render("welcome", {
+    loggedIn: req.session.loggedIn,
   });
 });
 
+//render pet update
+router.get("/petUpdate", (req, res) => {
+  res.render("petUpdate");
+});
+
 // render pet gallery
-router.get('/petGallery', (req, res) => {
-  console.log('======================');
+router.get("/petGallery", (req, res) => {
+  console.log("======================");
   Pet.findAll({
     attributes: [
-      'owner_id',
-      'id',
-      'image',
-      'petName',
-      'petGender',
-      'petBirthday',
-      'petLikesSwimming',
-      'petLikesWalks',
-      'petLikesBones',
-      'petLikesLicking',
-      'petLikesBarking',
-      'petLikesRunning',
-      'petLikesJumping',
-      'petLikesTreats',
-      'petAboutMe',
-
+      "owner_id",
+      "id",
+      "image",
+      "petName",
+      "petGender",
+      "petBirthday",
+      "petLikesSwimming",
+      "petLikesWalks",
+      "petLikesBones",
+      "petLikesLicking",
+      "petLikesBarking",
+      "petLikesRunning",
+      "petLikesJumping",
+      "petLikesTreats",
+      "petAboutMe",
     ],
     include: [
       {
         model: Owner,
-        attributes: ['username', 'email'],
+        attributes: ["username", "email"],
       },
     ],
-    order: [['id', 'DESC']],
+    order: [["id", "DESC"]],
   })
-    .then(dbPetData => {
-      const petCards = dbPetData.map(pet => pet.get({ plain: true }));
+    .then((dbPetData) => {
+      const petCards = dbPetData.map((pet) => pet.get({ plain: true }));
 
-      res.render('petGallery', {
+      res.render("petGallery", {
         petCards,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 // single pet
-router.get('/singlepet/:id', (req, res) => {
-  console.log('======================');
+router.get("/singlepet/:id", (req, res) => {
+  console.log("======================");
   Pet.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: [
-      'owner_id',
-      'image',
-      'petName',
-      'petGender',
-      'petBirthday',
-      'petLikesSwimming',
-      'petLikesWalks',
-      'petLikesBones',
-      'petLikesLicking',
-      'petLikesBarking',
-      'petLikesRunning',
-      'petLikesJumping',
-      'petLikesTreats',
-      'petAboutMe'
+      "owner_id",
+      "image",
+      "petName",
+      "petGender",
+      "petBirthday",
+      "petLikesSwimming",
+      "petLikesWalks",
+      "petLikesBones",
+      "petLikesLicking",
+      "petLikesBarking",
+      "petLikesRunning",
+      "petLikesJumping",
+      "petLikesTreats",
+      "petAboutMe",
     ],
     include: [
       {
@@ -101,23 +125,22 @@ router.get('/singlepet/:id', (req, res) => {
       },
     ],
   })
-    .then(dbPetData => {
+    .then((dbPetData) => {
       if (!dbPetData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
       const petCard = dbPetData.get({ plain: true });
 
-      res.render('singlepet', {
+      res.render("singlepet", {
         petCard,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
