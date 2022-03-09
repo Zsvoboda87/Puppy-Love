@@ -19,7 +19,7 @@ const upload = multer({storage: storage})
 
 // update pet image and about me
 router.put('/update', withAuth, upload.single('petImage'), (req, res) => {
-    Pet.update({
+    Pet.upload({
       image: req.file.filename,
       petAboutMe: req.body.petAboutMe
     })
@@ -29,3 +29,9 @@ router.put('/update', withAuth, upload.single('petImage'), (req, res) => {
       res.status(500).json(err);
     });
   });
+
+router.get('/', withAuth, (req, res) => {
+    res.render('petUpdate',{loggedIn: req.session.loggedIn})
+});
+
+module.exports = router;
