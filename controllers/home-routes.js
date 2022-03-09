@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const req = require("express/lib/request");
+const res = require("express/lib/response");
 const sequelize = require("../config/connection");
 const { Owner, Pet } = require("../models");
 
@@ -25,7 +27,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// // render pet gallery
+// render pet gallery
 router.get('/petGallery', (req, res) => {
   console.log('======================');
   Pet.findAll({

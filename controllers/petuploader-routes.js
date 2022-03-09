@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Owner, Pet} = require('../models');
-const withAuth = require('../utils/auth')
+const withAuth = require('../utils/auth');
 
 const path = require('path')
 const multer = require('multer');
@@ -47,10 +47,5 @@ router.post('/upload', withAuth, upload.single('petImage'), (req, res) => {
 router.get('/', withAuth, (req, res) => {
     res.render('petuploader',{loggedIn: req.session.loggedIn})
 });
-
-
-// router.get('/upload', (req, res) => {
-//     res.render('petGallery')
-// });
 
 module.exports = router;
