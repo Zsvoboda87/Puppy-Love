@@ -41,16 +41,9 @@ Pet.init(
           type: DataTypes.DATE,
           get: function() {
             const birthDate = new Date(this.getDataValue('petBirthday'));
-
             const birthdayMath = Math.abs(Date.now() - birthDate);
             const birthdayMath2 = Math.ceil(birthdayMath / (1000 * 60 * 60 * 24));
-            console.log(birthDate);
-            console.log(birthdayMath2 + " days");
             const birthdayMath3 = Math.floor(birthdayMath2 / 365);
-            console.log(birthdayMath3);
-            if (birthdayMath3 < 1) {
-              console.log();
-            }
             if (birthdayMath3 < 1) {
               return "They are too young to date.";
             }
