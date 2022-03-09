@@ -1,6 +1,7 @@
 
 const router = require('express').Router();
 const { Owner, Pet } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.post("/", (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
@@ -106,7 +107,7 @@ router.get('/', (req, res) => {
 // delete Owner (deletes account?)
 
 //update Owner's email
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Owner.update(
       {
           email: req.body.email

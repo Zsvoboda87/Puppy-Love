@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Owner, Pet} = require('../models');
+const withAuth = require('../utils/auth')
 
 const path = require('path')
 const multer = require('multer');
@@ -17,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 
-router.post('/upload', upload.single('petImage'), (req, res) => { 
+router.post('/upload', withAuth, upload.single('petImage'), (req, res) => { 
     Pet.create({
               image: req.file.filename,
               owner_id: req.session.owner_id,
@@ -35,16 +36,21 @@ router.post('/upload', upload.single('petImage'), (req, res) => {
               petAboutMe: req.body.petAboutMe
             })
             res.redirect('/petGallery')
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+                
+              });
 });
 
 
-router.get('/', (req, res) => {
-    res.render('petuploader')
+router.get('/', withAuth, (req, res) => {
+    res.render('petuploader',{loggedIn: req.session.loggedIn})
 });
 
 
-router.get('/upload', (req, res) => {
-    res.render('petGallery')
-});
+// router.get('/upload', (req, res) => {
+//     res.render('petGallery')
+// });
 
 module.exports = router;
