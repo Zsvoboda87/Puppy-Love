@@ -29,5 +29,9 @@
       {{/if}}
       <h4>{{petCard.petAboutMe}}</h4>
       <img src="/Images/{{petCard.image}}"/>
+
+      {{#if petCard.owner_id}}
+      <button>Update Pet</button>
+      {{/if}}
   </div>
 

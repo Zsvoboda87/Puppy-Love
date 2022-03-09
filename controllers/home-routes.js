@@ -92,6 +92,12 @@ router.get('/singlepet/:id', (req, res) => {
       'petLikesTreats',
       'petAboutMe'
     ],
+    include: [
+      {
+        model: Owner,
+        attributes: ['username', 'email'],
+      },
+    ],
   })
     .then(dbPetData => {
       if (!dbPetData) {

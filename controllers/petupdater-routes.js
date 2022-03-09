@@ -18,10 +18,24 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 
 // update pet image and about me
-router.put('/update', withAuth, upload.single('petImage'), (req, res) => {
-    Pet.upload({
-      image: req.file.filename,
-      petAboutMe: req.body.petAboutMe
+router.put('/update/:id', withAuth, upload.single('petImage'), (req, res) => {
+    Pet.update(
+      {
+        image: req.file.filename,
+        petAboutMe: req.body.petAboutMe,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+    .then((puppy_love_db) => {
+      if(!puppy_love_db) {
+        res.status(404).json({ message: "No pet found with this id" });
+        return;
+      }
+      res.json(puppy_love_db);
     })
     res.redirect('/petGallery')
     .catch(err => {
@@ -30,7 +44,7 @@ router.put('/update', withAuth, upload.single('petImage'), (req, res) => {
     });
   });
 
-router.get('/', withAuth, (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
     res.render('petUpdate',{loggedIn: req.session.loggedIn})
 });
 
