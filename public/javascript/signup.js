@@ -18,7 +18,7 @@ async function signupFormHandler(event) {
 
     // check the response status
     if (response.ok) {
-      document.location.replace("/petUploader");
+      document.location.replace("/petuploader");
     } else {
       alert(response.statusText);
     }
