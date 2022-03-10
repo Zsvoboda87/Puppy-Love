@@ -1,20 +1,40 @@
-
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Owner, Pet} = require('../models');
 const withAuth = require('../utils/auth');
+// const Formidable = require('formidable');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+require('dotenv').config();
+
 
 const path = require('path')
 const multer = require('multer');
-const { response } = require('express');
+// const { response } = require('express');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/Images");
-  },
 
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+  
+})
+
+
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "public/Images");
+//   },
+
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   },
+// });
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'Image',
   },
 });
 
@@ -22,7 +42,7 @@ const upload = multer({ storage: storage });
 
 router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
   Pet.create({
-    image: req.file.filename,
+    image: req.file.path,
     owner_id: req.session.owner_id,
     petName: req.body.petName,
     petGender: req.body.petGender,
@@ -47,8 +67,5 @@ router.get("/", withAuth, (req, res) => {
   res.render("petuploader", { loggedIn: req.session.loggedIn });
 });
 
-// router.get('/upload', (req, res) => {
-//     res.render('petGallery')
-// });
 
 module.exports = router;
