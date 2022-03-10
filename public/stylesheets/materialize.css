@@ -2576,7 +2576,7 @@ template {
   display: none;
 }
 
-html {
+/*html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -2584,7 +2584,7 @@ html {
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
-}
+} */
 
 button,
 input,
