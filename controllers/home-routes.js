@@ -121,7 +121,7 @@ router.get("/singlepet/:id", (req, res) => {
     include: [
       {
         model: Owner,
-        attributes: ['username', 'email'],
+        attributes: ["username", "email"],
       },
     ],
   })
