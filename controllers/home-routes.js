@@ -143,4 +143,52 @@ router.get("/singlepet/:id", (req, res) => {
     });
 });
 
+router.get("/owenerpets/:id", (req, res) => {
+  console.log("======================");
+  Owner.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ['username', 'email'],
+    include: [
+      {
+        model: Pet,
+        
+        attributes: [
+          "owner_id",
+          "image",
+          "petName",
+          "petGender",
+          "petBirthday",
+          "petLikesSwimming",
+          "petLikesWalks",
+          "petLikesBones",
+          "petLikesLicking",
+          "petLikesBarking",
+          "petLikesRunning",
+          "petLikesJumping",
+          "petLikesTreats",
+          "petAboutMe",
+        ],
+      },
+    ],
+  })
+    .then((dbPetData) => {
+      if (!dbPetData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      const petCard = dbPetData.get({ plain: true });
+
+      res.render("ownerPets", {
+        petCard,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
