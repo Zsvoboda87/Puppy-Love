@@ -29,7 +29,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
-  res.redirect("/homepage");
+  res.redirect("/homepage", {ownID: req.session.owner_id});
   Pet.create({
     image: req.file.path,
     owner_id: req.session.owner_id,
