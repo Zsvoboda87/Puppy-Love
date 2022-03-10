@@ -2,7 +2,6 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Owner, Pet} = require('../models');
 const withAuth = require('../utils/auth');
-// const Formidable = require('formidable');
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 require('dotenv').config();
@@ -10,7 +9,6 @@ require('dotenv').config();
 
 const path = require('path')
 const multer = require('multer');
-// const { response } = require('express');
 
 
 cloudinary.config({
@@ -31,6 +29,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
+  res.redirect("/homepage");
   Pet.create({
     image: req.file.path,
     owner_id: req.session.owner_id,
@@ -46,8 +45,7 @@ router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
     petLikesJumping: req.body.petLikesJumping,
     petLikesTreats: req.body.petLikesTreats,
     petAboutMe: req.body.petAboutMe,
-  });
-  res.redirect("/homepage")
+  })
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
