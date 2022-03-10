@@ -21,16 +21,6 @@ cloudinary.config({
 })
 
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "public/Images");
-//   },
-
-//   filename: (req, file, cb) => {
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   },
-// });
-
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
@@ -57,10 +47,15 @@ router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
     petLikesTreats: req.body.petLikesTreats,
     petAboutMe: req.body.petAboutMe,
   });
-  res.redirect("/homepage").catch((err) => {
+  res.redirect("/homepage")
+  .catch((err) => {
     console.log(err);
     res.status(500).json(err);
   });
+});
+
+router.get("/upload", withAuth, (req, res) => {
+  res.render("petGallery", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/", withAuth, (req, res) => {
