@@ -75,6 +75,16 @@ body {
   margin: auto;
 }
 
+/* Pet Uploader*/
+.pet-uploader {
+  
+  text-align: center;
+}
+
+.pet-uploader label {
+ color: blueviolet;
+}
+
 /* welcome page css */
 .welcome {
   height: 100%;
