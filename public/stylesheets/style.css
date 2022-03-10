@@ -142,3 +142,14 @@ body {
   max-height: 300px;
   max-width: 100%;
 }
+
+.testimonial p {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.top-testimonial h2 {
+  font-family: 'Patrick Hand', cursive;
+  color:red ;
+  font-weight: bold;
+}
