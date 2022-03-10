@@ -160,6 +160,7 @@ router.get("/ownerpets/:id", (req, res) => {
         attributes: [
           "owner_id",
           "image",
+          "id",
           "petName",
           "petGender",
           "petBirthday",
@@ -189,18 +190,9 @@ console.log(petCards)
         petCards,
         loggedIn: req.session.loggedIn,
       })
-
-      //   const petCard = dbPetData.get({ plain: true });
-
-      //   console.log(petCard.pets)
-
-      //   res.render("ownerPets", {
-      //     petCard,
-      //     loggedIn: req.session.loggedIn,
-      //   });
-      // })
-     
   });
 });
+
+
 
 module.exports = router;
