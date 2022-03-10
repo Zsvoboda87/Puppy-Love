@@ -4,25 +4,27 @@
     action="/petUploader/upload"
     enctype="multipart/form-data"
    >
-    <h1>Upload Your Pet!</h1>
+    
+    <h2>Upload Your Pet!</h2>
     <label>Pet Name</label>
     <input type="text" name="petName" />
 
     <div class="gender">
-      <h3>Gender</h3>
+      <h4>Gender</h4>
       <div>
         <input type="radio" name="petGender" value="Female" > Female <br>
+        
         <input type="radio" name="petGender" value="Male" > Male <br>
     </div>
 
 
 
     <div>
-      <label>Birthday</label>
+      <h4>Birthday</h4>
       <input type="date" name="petBirthday" />
     </div>
     <div class="flex-column">
-      <label>Your Dogs Interests</label>
+      <h4>Your Dog's Hobbies</h4>
                 <div class="checkbox-column">
                     <label><input class="checkbox" type="checkbox" name="petLikesSwimming" value="true">Swimming</label>
                     <label><input class="checkbox" type="checkbox" name="petLikesWalks" value="true">Walks</label>
@@ -36,10 +38,14 @@
                     <label><input class="checkbox" type="checkbox" name="petLikesTreats" value="true">Treats</label>
                 </div>
     </div>
+  
+  <br>
+
     <div class="flex-column">
       <label>Description of your Dog</label>
       <input type="text" name="petAboutMe" />
     </div>
+    
     <div>
       <h2>Upload Image</h2>
       <input type="file" name="petImage" accept="image/*"/>

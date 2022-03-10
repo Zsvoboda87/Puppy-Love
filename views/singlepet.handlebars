@@ -1,34 +1,60 @@
-  
+  <section>
+    <a
+      href="/welcome"
+      id="logout"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Logout</a>
+    <a
+      href="/petGallery"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Pet Gallery</a>
+    <a
+      href="/petUpdate"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Update Your Pet's Info</a>
+    <a
+      href="/petuploader"
+      class="btn-large waves-effect waves-light teal lighten-1"
+    >Upload a New Pet</a>
+  </section>
+ 
   <div class="flex-column single-pet-parent">
+      <img src="/Images/{{petCard.image}}"/>
+
       <h1>{{petCard.petName}}</h1>
       <h3>{{petCard.petGender}}</h3>
-      <h3>{{petCard.petBirthday}}</h3>
+      <h2>{{petCard.petBirthday}}</h2>
       {{#if petCard.petLikesSwimming}}
-      <h3>Swimming</h3>
+      <h2>Swimming</h2>
       {{/if}}
       {{#if petCard.petLikesWalks}}
-      <h3>Walks</h3>
+      <h2>Walks</h2>
       {{/if}}
       {{#if petCard.petLikesBones}}
-      <h3>Bones</h3>
+      <h2>Bones</h2>
       {{/if}}
       {{#if petCard.petLikesLicking}}
-      <h3>Licking</h3>
+      <h2>Licking</h2>
       {{/if}}
       {{#if petCard.petLikesBarking}}
-      <h3>Barking</h3>
+      <h2>Barking</h2>
       {{/if}}
       {{#if petCard.petLikesRunning}}
-      <h3>Running</h3>
+      <h2>Running</h2>
       {{/if}}
       {{#if petCard.petLikesJumping}}
-      <h3>Jumping</h3>
+      <h2>Jumping</h2>
       {{/if}}
       {{#if petCard.petLikesTreats}}
-      <h3>Treats</h3>
+      <h2>Treats</h2>
       {{/if}}
+<<<<<<< HEAD
       <h4>{{petCard.petAboutMe}}</h4>
       <img src="{{petCard.image}}"/>
+=======
+      <h3>{{petCard.petAboutMe}}</h3>
+      
+>>>>>>> 884d226d4195f7bb5a40e7f35a904c48aaa6b5c0
 
       {{#if petCard.owner_id}}
       <button>Update Pet</button>

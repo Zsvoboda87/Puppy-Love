@@ -38,6 +38,11 @@ h2 {
 
 
 /* Utility Classes */
+
+body {
+  background-image: url(../Images/rainbow-pawprints.jpg.png);
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -48,13 +53,19 @@ h2 {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-bottom: 20px;
+  width: auto;
+  font-family: 'Patrick Hand', cursive;
 }
+
+
 
 .card-parent {
   width: 22vw;
   margin: 0;
   margin-top: 10px;
   border: 2px solid black;
+  background-color:rgb(247, 80, 158);
+  color:white;
 }
 .card-parent img {
   width: 22vw;
@@ -68,5 +79,96 @@ h2 {
 .single-pet-parent {
   width: 42vw;
   margin: auto;
+  font-family: 'Patrick Hand', cursive; 
+  background-color: palevioletred;
+  text-align: center;
 }
+
+
+/* Pet Uploader*/
+.pet-uploader {
+  
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+}
+
+.pet-uploader label {
+ color: white;
+ font-size: x-large;
+
+}
+
+.pet-uploader h2 {
+  color:greenyellow;
+  
+}
+
+.pet-uploader form {
+  color: rgb(239, 244, 245);
+  background-color:rgb(247, 80, 158) ;
+  padding: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  width: 40%;
+  margin: auto ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  
+
+}
+
+
+/* welcome page css */
+.welcome {
+  height: 100%;
+  background-image: url(../Images/rainbowPuppyLove.jpg);
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  background-attachment: scroll;
+}
+
+.welcome h2 {
+  color:rgb(253, 8, 0);
+  font-family: 'Patrick Hand' , cursive;
+  font-weight: bold;
+  padding-top: 10%;
+}
+
+.welcome h4 {
+  font-family: 'Patrick Hand', cursive;
+  text-align: end;
+ 
+}
+
+/*signup css*/
+.signup-form {
+  color: black;
+  background-color: rgba(98, 56, 252, 0.8);
+  padding: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  width: 40%;
+  margin: auto ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  
+}
+
+.signup-form label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: x-large;
+  color: aquamarine;
+}
+
+.signup-form button {
+  font-family: 'Patrick Hand', cursive;
+  font-size: large;
+}
+
 
