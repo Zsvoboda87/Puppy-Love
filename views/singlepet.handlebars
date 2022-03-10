@@ -19,7 +19,7 @@
   </section>
  
   <div class="flex-column single-pet-parent">
-      <img src="/Images/{{petCard.image}}"/>
+      <img src="{{petCard.image}}"/>
 
       <h1>{{petCard.petName}}</h1>
       <h3>{{petCard.petGender}}</h3>
@@ -48,13 +48,8 @@
       {{#if petCard.petLikesTreats}}
       <h2>Treats</h2>
       {{/if}}
-<<<<<<< HEAD
-      <h4>{{petCard.petAboutMe}}</h4>
-      <img src="{{petCard.image}}"/>
-=======
       <h3>{{petCard.petAboutMe}}</h3>
       
->>>>>>> 884d226d4195f7bb5a40e7f35a904c48aaa6b5c0
 
       {{#if petCard.owner_id}}
       <button>Update Pet</button>

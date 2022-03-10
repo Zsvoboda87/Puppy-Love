@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Owner, Pet} = require('../models');
@@ -16,8 +15,8 @@ const multer = require('multer');
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
-  api_key: "243483875326316",
-  api_secret: "RTHxHT-qGNwZ5nm18nfFBSW5_nI",
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
   
 })
 
@@ -67,5 +66,6 @@ router.post("/upload", withAuth, upload.single("petImage"), (req, res) => {
 router.get("/", withAuth, (req, res) => {
   res.render("petuploader", { loggedIn: req.session.loggedIn });
 });
+
 
 module.exports = router;
