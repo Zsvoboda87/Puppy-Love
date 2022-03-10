@@ -1,13 +1,14 @@
- <div class="pet-uploader">
+    <div class="pet-uploader">
      <!--make own class for pet-updater (currently using pet-uploader)-->
         <form method="post" action="/dashboard/upload" enctype="multipart/form-data">
+        <input type="hidden" id="petID" value="{{Pet.owner_id}}"/>
             <div class="flex-column">
                 <label>Update your Pet's About Me!</label>
-                <input type="text" name="petAboutMe" />
+                <input type="text" name="petAboutMe" class="petAboutMe"/>
             </div>
             <div>
                 <h2>Upload a new pet Image!</h2>
-                <input type="file" name="petImage" />
+                <input type="file" name="petImage" class="petImage" />
                 <input type="submit" />
             </div>
         </form>
