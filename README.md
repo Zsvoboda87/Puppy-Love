@@ -2,7 +2,7 @@
 
 ## Description
 
-What: Our motivation for this project was to provide a puppy dating site where a user could upload their pets to the site and find other users' pets. Our efforts have allowed the user to login and create multiple pets with their own name, gender, birthday, likes, and aboutme biography. The user can then choose to update or delete their pets' information, with the changes reflecting on the site and the database. The user can also view the pet gallery, to see all pets. When the user clicks on the desired pet, it brings the user to that pets' profile page. Our project should stand out for its unique concept and update-ability.
+What: Our motivation for this project was to provide a puppy dating site where a user could upload their pets to the site and find other users' pets. Our efforts have allowed the user to login and create multiple pets with their own name, gender, birthday, likes, and aboutme biography. The user can then choose to update or delete their pets' information, with the changes reflecting on the site and the database. The user can also view the pet gallery, to see all pets. When the user clicks on the desired pet, it brings the user to that pets' profile page. Our project should stand out for its unique concept.
 
 ![Screenshot](./assets/images/screenshot.PNG "Screenshot")
 
@@ -25,17 +25,17 @@ No installation required. Follow the link listed under Usage below or in the Des
 
 * [Link to Webpage](https://github.com/Zsvoboda87/Puppy-Love)
 
-Text for screenshot2
-
 ![Screenshot2](./assets/images/screenshot2.PNG "Screenshot2")
 
-Text for screenshot3
+After logging in, the user is greeted by a pet gallery where they can view all of the pets that have been added to the database by themselves and other users.
 
 ![Screenshot3](./assets/images/screenshot3.PNG "Screenshot3")
 
-Text for screenshot4
+A user can upload their pet via the Upload Pet button, where they are able to add the pet's name, birthday, gender, likes, image, and about me section.
 
 ![Screenshot4](./assets/images/screenshot4.PNG "Screenshot4")
+
+The user is able to view their own pets via the view your pets tab. In the future, we plan on adding the ability to update a user's pets.
 
 ## Credits
 
@@ -87,7 +87,7 @@ SOFTWARE.
 
 ## Features
 
-The website has a login that encrypts the users password in the database. The website allows an owner to have multiple pets uploaded, and they are able to update the about me and image of their pets.
+The website has a login that encrypts the users password in the database. The website allows an owner to have multiple pets uploaded.
 
 ## Contributing
 
