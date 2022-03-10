@@ -15,9 +15,7 @@ router.get("/", (req, res) => {
 router.get("/login", (req, res) => {
   // if logged in redirect to homepage
   if (req.session.loggedIn) {
-    res.redirect("/homepage", {
-      ownID: req.session.owner_id,
-    });
+    res.redirect("/homepage" );
     return;
   }
   res.render("login");
@@ -192,6 +190,8 @@ console.log(petCards)
       })
   });
 });
+
+
 
 
 
