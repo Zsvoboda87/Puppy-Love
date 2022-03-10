@@ -8,10 +8,12 @@
       href="/petGallery"
       class="btn-large waves-effect waves-light teal lighten-1"
     >Pet Gallery</a>
+    {{#if petOwner}}
     <a
       href="/petUpdate"
       class="btn-large waves-effect waves-light teal lighten-1"
     >Update Your Pet's Info</a>
+    {{/if}}
     <a
       href="/petuploader"
       class="btn-large waves-effect waves-light teal lighten-1"
@@ -19,6 +21,7 @@
   </section>
  
   <div class="flex-column single-pet-parent">
+    <input type="hidden" id="petID" value="{{Pet.owner_id}}"/>
       <img src="{{petCard.image}}"/>
 
       <h1>{{petCard.petName}}</h1>
@@ -49,10 +52,6 @@
       <h2>Treats</h2>
       {{/if}}
       <h3>{{petCard.petAboutMe}}</h3>
-      
-
-      {{#if petCard.owner_id}}
-      <button>Update Pet</button>
-      {{/if}}
   </div>
 
+  <script src="/javascript/update.js"></script>
