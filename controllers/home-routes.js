@@ -15,7 +15,9 @@ router.get("/", (req, res) => {
 router.get("/login", (req, res) => {
   // if logged in redirect to homepage
   if (req.session.loggedIn) {
-    res.redirect("/homepage");
+    res.redirect("/homepage", {
+      ownID: req.session.owner_id,
+    });
     return;
   }
   res.render("login");
@@ -32,7 +34,7 @@ router.get("/signup", (req, res) => {
 
 //render homepage
 router.get("/homepage", (req, res) => {
-  res.render("homepage");
+  res.render("homepage", { ownID: req.session.owner_id });
 });
 
 //  logout and render welcome
@@ -130,6 +132,7 @@ router.get("/singlepet/:id", (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
+
       const petCard = dbPetData.get({ plain: true });
 
       res.render("singlepet", {
@@ -142,5 +145,54 @@ router.get("/singlepet/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get("/ownerpets/:id", (req, res) => {
+  console.log("======================");
+  Owner.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["username", "email"],
+    include: [
+      {
+        model: Pet,
+
+        attributes: [
+          "owner_id",
+          "image",
+          "id",
+          "petName",
+          "petGender",
+          "petBirthday",
+          "petLikesSwimming",
+          "petLikesWalks",
+          "petLikesBones",
+          "petLikesLicking",
+          "petLikesBarking",
+          "petLikesRunning",
+          "petLikesJumping",
+          "petLikesTreats",
+          "petAboutMe",
+        ],
+      },
+    ],
+  }).then((dbPetData) => {
+    if (!dbPetData) {
+      res.status(404).json({ message: "No post found with this id" });
+      return;
+    }
+
+    const ownerCard = dbPetData.get({ plain: true });
+    const petCards = ownerCard.pets;
+
+console.log(petCards)
+    res.render("ownerPets", {
+        petCards,
+        loggedIn: req.session.loggedIn,
+      })
+  });
+});
+
+
 
 module.exports = router;
