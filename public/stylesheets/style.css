@@ -153,3 +153,46 @@ body {
   color:red ;
   font-weight: bold;
 }
+
+/* For screen sizes 650px wide and under) */
+@media screen and (max-width:830px) {
+ 
+
+
+h1 { 
+  font-size: 2.8rem;
+}
+
+
+h3 { 
+  font-size: 2.6rem;
+}
+.card-parent {
+  width: 48vw;
+
+}
+
+.card-parent img {
+  width: 48vw;
+  margin: 0;
+}
+.single-pet-parent {
+  width: 92vw;
+
+}
+}
+
+/* For screen sizes 650px wide and under) */
+@media screen and (max-width:550px) {
+ 
+
+  .card-parent {
+    width: 92vw;
+  
+  }
+  
+  .card-parent img {
+    width: 92vw;
+    margin: 0;
+  }
+  }
